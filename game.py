@@ -8,6 +8,9 @@ pg.init()
 screen = pg.display.set_mode((600,800))
 pg.display.set_caption("Pac-Man (clone)")
 
+#Musik
+pg.mixer.Sound("Min_sang.wav")
+pg.mixer.music.play(-1)
 
 
 ## Load images ##
