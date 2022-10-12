@@ -9,9 +9,10 @@ screen = pg.display.set_mode((600,800))
 pg.display.set_caption("Pac-Man (clone)")
 
 #Musik
-pg.mixer.music.load('Min_sang.mp3')
-pg.mixer.music.play(-1)
-
+pg.mixer.pre_init(44100, 32, 2, 1024)
+pg.mixer.get_init()
+pg.mixer.music.load("Banger2.wav")
+pg.mixer.music.play()
 
 ## Load images ##
 pacman_images = []
@@ -68,6 +69,11 @@ while running:
                 direction = "down"
             elif event.key == pg.K_ESCAPE:
                 running = False
+            elif event.key == pg.K_m:
+                if pg.mixer.music.get_busy():
+                    pg.mixer.music.stop()
+                else:
+                    pg.mixer.music.play()    
 
     # Move
     if direction == "left":
